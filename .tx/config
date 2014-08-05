@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[gravityview-visual-composer.gravityview-visual-composer]
+file_filter = languages/gravityview-visual-composer-<lang>.po
+source_lang = en_US
+type = PO
+lang_map = pt: pt_PT, it: it_IT, bn: bn_BD
