@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GravityView - Visual Composer Extension\n"
-"POT-Creation-Date: 2014-08-04 15:03-0700\n"
-"PO-Revision-Date: 2014-08-04 15:04-0700\n"
+"POT-Creation-Date: 2014-08-04 20:38-0700\n"
+"PO-Revision-Date: 2014-08-04 20:38-0700\n"
 "Last-Translator: Katz Web Services, Inc. <support@katz.co>\n"
 "Language-Team: Katz Web Services, Inc. <support@katz.co>\n"
 "Language: en_US\n"
@@ -18,40 +18,36 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: lib/class-gravityview-extension.php:97
+#: lib/class-gravityview-extension.php:138
 #, php-format
-msgid "%s could not be activated."
+msgid "Could not activate the %s Extension; GravityView is not active."
 msgstr ""
 
-#: lib/class-gravityview-extension.php:144
-msgid "GravityView is not active."
-msgstr ""
-
-#: lib/class-gravityview-extension.php:154
+#: lib/class-gravityview-extension.php:148
 #, php-format
-msgid "The extension requires GravityView Version %s or newer."
+msgid "The %s Extension requires GravityView Version %s or newer."
 msgstr ""
 
-#: visual-composer.php:83
+#: visual-composer.php:75
 msgid "No GravityView Views found."
 msgstr ""
 
-#: visual-composer.php:88
+#: visual-composer.php:80
 msgid "View"
 msgstr ""
 
-#: visual-composer.php:100
+#: visual-composer.php:92
 msgid "Select a View to display"
 msgstr ""
 
-#: visual-composer.php:113
+#: visual-composer.php:105
 msgid "GravityView"
 msgstr ""
 
-#: visual-composer.php:116
+#: visual-composer.php:108
 msgid "Content"
 msgstr ""
 
-#: visual-composer.php:117
+#: visual-composer.php:109
 msgid "Embed a GravityView View"
 msgstr ""

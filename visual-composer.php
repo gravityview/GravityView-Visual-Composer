@@ -2,7 +2,7 @@
 /*
 Plugin Name: GravityView - Visual Composer Extension
 Plugin URI: https://gravityview.co/extensions/visual-composer/
-Description: Enable enhanced GravityView integration with the <a href="http://codecanyon.net/item/visual-composer-page-builder-for-wordpress/242431?ref=katzwebservices">Visual Composer</a> plugin
+Description: Enable enhanced GravityView integration with the <a href="http://katz.si/visualcomposer">Visual Composer</a> plugin
 Version: 1.0
 Text Domain:       	gravityview-visual-composer
 License:           	GPLv2 or later
@@ -40,22 +40,19 @@ function gv_extension_visual_composer_load() {
 
 		function add_hooks() {
 
-			if( !function_exists( 'vc_map') ) {
+			// Visual Composer isn't loaded.
+			if( !defined( 'WPB_VC_VERSION' ) ) {
+
+				self::add_notice(array(
+					'message' => sprintf( 'The GravityView Visual Composer extension requires the %sVisual Composer%s plugin.', '<a href="http://katz.si/visualcomposer">', '</a>' )
+				));
+
 				do_action( 'gravityview_log_debug', 'GravityView_Visual_Composer[add_hooks] Not loading: Visual Composer isnt active.');
+
 				return;
 			}
 
-			add_action( 'admin_head', array( $this, 'add_icon' ) );
-
 			add_action( 'admin_init', array( $this, 'vc_map' ) );
-		}
-
-		/**
-		 * Add a custom icon
-		 */
-		function add_icon() {
-
-			echo '<style>.vc_shortcode-link .icon-wpb-vc_gravityview, .wpb_gravityview .icon-wpb-vc_gravityview { background-image: url('.plugins_url('assets/img/icon.png', __FILE__ ).'); }</style>';
 		}
 
 		/**
@@ -65,11 +62,6 @@ function gv_extension_visual_composer_load() {
 		 */
 		function vc_map() {
 			global $vc_manager;
-
-			if ( !class_exists( 'GravityView_Plugin' ) ) {
-				do_action( 'gravityview_log_debug', 'GravityView_Visual_Composer[vc_map] Not loading: GravityView isnt active.');
-				return;
-			}
 
 			$views = get_posts( array(
 				'post_type' => 'gravityview',
@@ -112,7 +104,7 @@ function gv_extension_visual_composer_load() {
 			vc_map( array(
 				'name' => __( 'GravityView', 'gravityview-visual-composer' ),
 				'base' => 'gravityview',
-				'icon' => 'icon-wpb-vc_gravityview',
+				'icon' => plugins_url('assets/img/icon.png', __FILE__ ),
 				'category' => __( 'Content', 'gravityview-visual-composer' ),
 				'description' => __( 'Embed a GravityView View', 'gravityview-visual-composer' ),
 				'params' => $params
