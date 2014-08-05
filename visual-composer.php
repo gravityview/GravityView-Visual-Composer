@@ -3,7 +3,7 @@
 Plugin Name: GravityView - Visual Composer Extension
 Plugin URI: https://gravityview.co/extensions/visual-composer/
 Description: Enable enhanced GravityView integration with the <a href="http://katz.si/visualcomposer">Visual Composer</a> plugin
-Version: 1.0
+Version: 1.0.1
 Text Domain:       	gravityview-visual-composer
 License:           	GPLv2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
@@ -30,7 +30,7 @@ function gv_extension_visual_composer_load() {
 
 		protected $_title = 'Visual Composer';
 
-		protected $_version = '1.0';
+		protected $_version = '1.0.1';
 
 		protected $_min_gravityview_version = '1.0';
 
@@ -41,7 +41,7 @@ function gv_extension_visual_composer_load() {
 		function add_hooks() {
 
 			// Visual Composer isn't loaded.
-			if( !defined( 'WPB_VC_VERSION' ) ) {
+			if( !function_exists( 'vc_map' ) ) {
 
 				self::add_notice(array(
 					'message' => sprintf( 'The GravityView Visual Composer extension requires the %sVisual Composer%s plugin.', '<a href="http://katz.si/visualcomposer">', '</a>' )
@@ -88,16 +88,17 @@ function gv_extension_visual_composer_load() {
 			} else {
 
 				// Overwrite the default
-				$gravityview_array = array(
-					__( 'Select a View to display', 'gravityview-visual-composer' ) => ''
+				$views_array = array(
+					__( '&mdash; Select a View to Insert &mdash;', 'gravityview-visual-composer' ) => ''
 				);
 
 				// Map the title of the view to the ID
 				foreach ( $views as $view ) {
-					$gravityview_array[ esc_attr( $view->post_title ) ] = $view->ID;
+					$title = !empty( $view->post_title ) ? esc_attr( $view->post_title ) : __('(no title)', 'gravityview-visual-composer' );
+					$views_array[ $title ] = $view->ID;
 				}
 
-				$params = $this->get_params( $gravityview_array );
+				$params = $this->get_params( $views_array );
 
 			}
 
@@ -106,7 +107,7 @@ function gv_extension_visual_composer_load() {
 				'base' => 'gravityview',
 				'icon' => plugins_url('assets/img/icon.png', __FILE__ ),
 				'category' => __( 'Content', 'gravityview-visual-composer' ),
-				'description' => __( 'Embed a GravityView View', 'gravityview-visual-composer' ),
+				'description' => __( 'Embed a View', 'gravityview-visual-composer' ),
 				'params' => $params
 			) );
 
@@ -115,18 +116,32 @@ function gv_extension_visual_composer_load() {
 		/**
 		 * Map GravityView
 		 * @see GravityView_View_Data::get_default_args()
-		 * @param  array $gravityview_array Array of posts
+		 * @param  array $views Array of Views
 		 * @return array                    Array of parameters
 		 */
-		function get_params( $gravityview_array ) {
+		function get_params( $views_array ) {
 
-			$default_params = GravityView_View_Data::get_default_args( true );
+			$default_params = array(
+				'page_size' => GravityView_View_Data::get_default_arg( 'page_size', true ),
+				'show_only_approved' => GravityView_View_Data::get_default_arg( 'show_only_approved', true ),
+				'lightbox' => GravityView_View_Data::get_default_arg( 'lightbox', true ),
+			);
 
-			$params = array();
-			foreach ( $default_params as $key => $param ) {
+			// Add the view picker first
+			$params = array(
+				array(
+					'value' => $views_array,
+					'heading' => __( 'View', 'gravityview-visual-composer' ),
+					'description' => __( 'Select a View to add it to your post or page.', 'gravityview-visual-composer' ),
+					'type'	=> 'dropdown',
+					'param_name' => 'id',
+					'admin_label' => true,
+				)
+			);
 
-				// Only show the ones we want.
-				if( empty( $param['show_in_shortcode'] ) ) { continue; }
+			foreach ( array( 'page_size', 'lightbox', 'show_only_approved', 'user_edit' ) as $key ) {
+
+				$param = GravityView_View_Data::get_default_arg( $key, true );
 
 				$type = $param['type'];
 				$heading = $param['name'];
@@ -146,11 +161,6 @@ function gv_extension_visual_composer_load() {
 					case 'text':
 						$type = 'textfield';
 						break;
-				}
-
-				if( $key === 'id' ) {
-					$value = $gravityview_array;
-					$type = 'dropdown';
 				}
 
 				$params[] = array(
