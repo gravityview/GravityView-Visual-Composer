@@ -3,7 +3,7 @@
 Plugin Name: GravityView - Visual Composer Extension
 Plugin URI: https://gravityview.co/extensions/visual-composer/
 Description: Enable enhanced GravityView integration with the <a href="http://katz.si/visualcomposer">Visual Composer</a> plugin
-Version: 1.0.1
+Version: 1.0.2
 Text Domain:       	gravityview-visual-composer
 License:           	GPLv2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
@@ -30,9 +30,9 @@ function gv_extension_visual_composer_load() {
 
 		protected $_title = 'Visual Composer';
 
-		protected $_version = '1.0.1';
+		protected $_version = '1.0.2';
 
-		protected $_min_gravityview_version = '1.0';
+		protected $_min_gravityview_version = '1.1.2';
 
 		protected $_text_domain = 'gravityview-visual-composer';
 
@@ -89,7 +89,7 @@ function gv_extension_visual_composer_load() {
 
 				// Overwrite the default
 				$views_array = array(
-					__( '&mdash; Select a View to Insert &mdash;', 'gravityview-visual-composer' ) => ''
+					__( 'Select a View to Insert', 'gravityview-visual-composer' ) => ''
 				);
 
 				// Map the title of the view to the ID
@@ -120,6 +120,8 @@ function gv_extension_visual_composer_load() {
 		 * @return array                    Array of parameters
 		 */
 		function get_params( $views_array ) {
+
+			if( !class_exists( 'GravityView_View_Data' ) ) { return $views_array; }
 
 			$default_params = array(
 				'page_size' => GravityView_View_Data::get_default_arg( 'page_size', true ),
