@@ -18,3 +18,4 @@ Enable enhanced GravityView integration with the <a href="http://katz.si/visualc
 
 = 1.0.2 = 
 * Fixed reported fatal error caused by missing `GravityView_View_Data`
+* Added: Romanian translation  (thanks [@ArianServ](https://www.transifex.com/accounts/profile/ArianServ/))
