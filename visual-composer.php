@@ -23,7 +23,7 @@ function gv_extension_visual_composer_load() {
 	if( !class_exists( 'GravityView_Extension' ) ) {
 
 		if( class_exists('GravityView_Plugin') && is_callable(array('GravityView_Plugin', 'include_extension_framework')) ) {
-			GravityView::include_extension_framework();
+			GravityView_Plugin::include_extension_framework();
 		} else {
 			// We prefer to use the one bundled with GravityView, but if it doesn't exist, go here.
 			include_once plugin_dir_path( __FILE__ ) . 'lib/class-gravityview-extension.php';
