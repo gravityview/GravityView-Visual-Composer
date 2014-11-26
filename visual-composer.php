@@ -150,7 +150,7 @@ function gv_extension_visual_composer_load() {
 				$param = GravityView_View_Data::get_default_arg( $key, true );
 
 				$type = $param['type'];
-				$heading = $param['name'];
+				$heading = $param['label'];
 				$value = $param['value'];
 
 				// Different name for dropdown
