@@ -161,7 +161,7 @@ function gv_extension_visual_composer_load() {
 						break;
 					case 'checkbox':
 						$heading = '';
-						$value = array( $param['name'] => $param['value'] );
+						$value = array( $param['label'] => $param['value'] );
 						break;
 					case 'number':
 					case 'text':
