@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GravityView Visual Composer\n"
 "POT-Creation-Date: 2014-08-04 22:06-0700\n"
-"PO-Revision-Date: 2014-08-05 13:48+0000\n"
+"PO-Revision-Date: 2014-09-23 05:20+0000\n"
 "Last-Translator: Jorge Pelaez <jorgepelaez@gmail.com>\n"
 "Language-Team: Spanish (Mexico) (http://www.transifex.com/projects/p/gravityview-visual-composer/language/es_MX/)\n"
 "MIME-Version: 1.0\n"
@@ -35,19 +35,19 @@ msgstr ""
 
 #: visual-composer.php:80 visual-composer.php:134
 msgid "View"
-msgstr ""
+msgstr "Vista"
 
 #: visual-composer.php:92
 msgid "&mdash; Select a View to Insert &mdash;"
-msgstr ""
+msgstr "&mdash; Seleccione una Vista para Insertar &mdash;"
 
 #: visual-composer.php:97
 msgid "(no title)"
-msgstr ""
+msgstr "(sin título)"
 
 #: visual-composer.php:106
 msgid "GravityView"
-msgstr ""
+msgstr "GravityView"
 
 #: visual-composer.php:109
 msgid "Content"
@@ -55,7 +55,7 @@ msgstr ""
 
 #: visual-composer.php:110
 msgid "Embed a View"
-msgstr ""
+msgstr "Incrustar una Vista"
 
 #: visual-composer.php:135
 msgid "Select a View to add it to your post or page."

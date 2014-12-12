@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GravityView Visual Composer\n"
 "POT-Creation-Date: 2014-08-04 22:06-0700\n"
-"PO-Revision-Date: 2014-08-05 04:08+0000\n"
+"PO-Revision-Date: 2014-09-23 05:20+0000\n"
 "Last-Translator: Zachary Katz <zack@katz.co>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/gravityview-visual-composer/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -21,12 +21,12 @@ msgstr ""
 #: lib/class-gravityview-extension.php:138
 #, php-format
 msgid "Could not activate the %s Extension; GravityView is not active."
-msgstr ""
+msgstr "Die %s Erweiterung konnte nicht aktiviert werden; GravityView ist derzeit nicht aktiv."
 
 #: lib/class-gravityview-extension.php:148
 #, php-format
 msgid "The %s Extension requires GravityView Version %s or newer."
-msgstr ""
+msgstr "Die %s Erweiterung benötigt GravityView Version %s oder höher."
 
 #: visual-composer.php:75
 msgid "No GravityView Views found."
@@ -34,19 +34,19 @@ msgstr ""
 
 #: visual-composer.php:80 visual-composer.php:134
 msgid "View"
-msgstr ""
+msgstr "Ansicht"
 
 #: visual-composer.php:92
 msgid "&mdash; Select a View to Insert &mdash;"
-msgstr ""
+msgstr "&mdash; Eine Ansicht zum Einfügen auswählen &mdash;"
 
 #: visual-composer.php:97
 msgid "(no title)"
-msgstr ""
+msgstr "(kein Titel)"
 
 #: visual-composer.php:106
 msgid "GravityView"
-msgstr ""
+msgstr "GravityView"
 
 #: visual-composer.php:109
 msgid "Content"
@@ -54,7 +54,7 @@ msgstr ""
 
 #: visual-composer.php:110
 msgid "Embed a View"
-msgstr ""
+msgstr "Eine Ansicht einfügen"
 
 #: visual-composer.php:135
 msgid "Select a View to add it to your post or page."

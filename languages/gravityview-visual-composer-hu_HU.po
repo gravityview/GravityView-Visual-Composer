@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GravityView Visual Composer\n"
 "POT-Creation-Date: 2014-08-04 22:06-0700\n"
-"PO-Revision-Date: 2014-08-05 04:08+0000\n"
+"PO-Revision-Date: 2014-09-23 05:20+0000\n"
 "Last-Translator: Zachary Katz <zack@katz.co>\n"
 "Language-Team: Hungarian (Hungary) (http://www.transifex.com/projects/p/gravityview-visual-composer/language/hu_HU/)\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr ""
 
 #: visual-composer.php:80 visual-composer.php:134
 msgid "View"
-msgstr ""
+msgstr "Nézet"
 
 #: visual-composer.php:92
 msgid "&mdash; Select a View to Insert &mdash;"
