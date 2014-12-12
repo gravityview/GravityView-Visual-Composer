@@ -149,9 +149,9 @@ function gv_extension_visual_composer_load() {
 
 				$param = GravityView_View_Data::get_default_arg( $key, true );
 
-				$type = $param['type'];
-				$heading = $param['name'];
-				$value = $param['value'];
+				$type = isset( $param['type'] ) ? $param['type'] : null;
+				$heading = isset( $param['name'] ) ? $param['name'] : null;
+				$value = isset( $param['value'] ) ? $param['value'] : null;
 
 				// Different name for dropdown
 				switch ( $param['type'] ) {
@@ -161,7 +161,7 @@ function gv_extension_visual_composer_load() {
 						break;
 					case 'checkbox':
 						$heading = '';
-						$value = array( $param['name'] => $param['value'] );
+						$value = array( $heading => $value );
 						break;
 					case 'number':
 					case 'text':
