@@ -17,6 +17,7 @@ Enable enhanced GravityView integration with the <a href="http://katz.si/visualc
 == Changelog ==
 
 = 1.0.3 =
+* Fixed: Label not properly displaying for checkbox options
 * Fixed: PHP notices
 * Updated translations (thanks everyone!)
 * Fixed: Auto-updates for Multisite installations
