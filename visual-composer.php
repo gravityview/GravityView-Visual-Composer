@@ -36,7 +36,7 @@ function gv_extension_visual_composer_load() {
 
 		protected $_version = '1.0.3';
 
-		protected $_min_gravityview_version = '1.1.2';
+		protected $_min_gravityview_version = '1.1.7';
 
 		protected $_text_domain = 'gravityview-visual-composer';
 
