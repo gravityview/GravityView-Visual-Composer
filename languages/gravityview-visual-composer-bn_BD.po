@@ -1,11 +1,12 @@
 # 
 # Translators:
+# Md Akter Hosen <tareqhi@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: GravityView Visual Composer\n"
 "POT-Creation-Date: 2014-08-04 22:06-0700\n"
-"PO-Revision-Date: 2014-08-05 04:08+0000\n"
-"Last-Translator: Zachary Katz <zack@katz.co>\n"
+"PO-Revision-Date: 2014-09-23 05:20+0000\n"
+"Last-Translator: Md Akter Hosen <tareqhi@gmail.com>\n"
 "Language-Team: Bengali (http://www.transifex.com/projects/p/gravityview-visual-composer/language/bn/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,41 +22,41 @@ msgstr ""
 #: lib/class-gravityview-extension.php:138
 #, php-format
 msgid "Could not activate the %s Extension; GravityView is not active."
-msgstr ""
+msgstr "%s এক্সটেনশন সক্রিয় করা যায়নি; গ্রাভিটি ভিউ সক্রিয় নয়।"
 
 #: lib/class-gravityview-extension.php:148
 #, php-format
 msgid "The %s Extension requires GravityView Version %s or newer."
-msgstr ""
+msgstr "%s এক্সটেনশন চালানোর জন্য গ্রাভিটি ভিউ ভার্সন %s অথবা নতুনতর প্রয়োজন।"
 
 #: visual-composer.php:75
 msgid "No GravityView Views found."
-msgstr ""
+msgstr "কোন গ্রাভিটি ভিউ দৃশ্য পাওয়া যায়নি।"
 
 #: visual-composer.php:80 visual-composer.php:134
 msgid "View"
-msgstr ""
+msgstr "দৃশ্য"
 
 #: visual-composer.php:92
 msgid "&mdash; Select a View to Insert &mdash;"
-msgstr ""
+msgstr "&mdash; প্রবেশ করানোর জন্য একটি দৃশ্য বাছাই করুন &mdash;"
 
 #: visual-composer.php:97
 msgid "(no title)"
-msgstr ""
+msgstr "(কোন টাইটেল নাই)"
 
 #: visual-composer.php:106
 msgid "GravityView"
-msgstr ""
+msgstr "গ্রাভিটি ভিউ"
 
 #: visual-composer.php:109
 msgid "Content"
-msgstr ""
+msgstr "বিষয়বস্তু"
 
 #: visual-composer.php:110
 msgid "Embed a View"
-msgstr ""
+msgstr "একটি দৃশ্য যুক্ত করুন"
 
 #: visual-composer.php:135
 msgid "Select a View to add it to your post or page."
-msgstr ""
+msgstr "আপনার পোস্ট অথবা পৃষ্ঠায় যুক্ত করার জন্য একটি দৃশ্য বাছাই করুন।"
