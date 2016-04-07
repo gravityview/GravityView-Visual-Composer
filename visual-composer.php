@@ -1,15 +1,15 @@
 <?php
 /*
-Plugin Name: GravityView - Visual Composer Extension
-Plugin URI: https://gravityview.co/extensions/visual-composer/
-Description: Enable enhanced GravityView integration with the <a href="http://katz.si/visualcomposer">Visual Composer</a> plugin
-Version: 1.0.4
-Text Domain:       	gravityview-visual-composer
-License:           	GPLv2 or later
-License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
-Domain Path:			/languages
-Author: Katz Web Services, Inc.
-Author URI: https://gravityview.co
+Plugin Name:  GravityView - Visual Composer Extension
+Plugin URI:   https://gravityview.co/extensions/visual-composer/
+Description:  Enable enhanced GravityView integration with the <a href="http://katz.si/visualcomposer">Visual Composer</a> plugin
+Version:      1.0.5
+Text Domain:  gravityview-visual-composer
+License:      GPLv2 or later
+License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+Domain Path:  /languages
+Author:       Katz Web Services, Inc.
+Author URI:   https://gravityview.co
 */
 
 add_action( 'plugins_loaded', 'gv_extension_visual_composer_load', 20 );
@@ -38,11 +38,13 @@ function gv_extension_visual_composer_load() {
 
 		protected $_title = 'Visual Composer';
 
-		protected $_version = '1.0.4';
+		protected $_version = '1.0.5';
 
 		protected $_min_gravityview_version = '1.1.7';
 
 		protected $_text_domain = 'gravityview-visual-composer';
+
+		protected $_item_id = 2685;
 
 		protected $_path = __FILE__;
 
@@ -74,7 +76,7 @@ function gv_extension_visual_composer_load() {
 
 			$views = get_posts( array(
 				'post_type'   => 'gravityview',
-				'numberposts' => - 1,
+				'numberposts' => -1,
 				'status'      => 'publish'
 			) );
 

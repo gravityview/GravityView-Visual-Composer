@@ -16,7 +16,7 @@ Enable enhanced GravityView integration with the <a href="http://katz.si/visualc
 
 == Changelog ==
 
-= 1.0.4 on April 6, 2016 =
+= 1.0.4 and 1.0.5 on April 6, 2016 =
 
 * Fixed: Checkbox labels not rendering properly
 * Updated the updater library
