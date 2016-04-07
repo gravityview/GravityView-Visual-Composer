@@ -3,7 +3,7 @@
 Plugin Name: GravityView - Visual Composer Extension
 Plugin URI: https://gravityview.co/extensions/visual-composer/
 Description: Enable enhanced GravityView integration with the <a href="http://katz.si/visualcomposer">Visual Composer</a> plugin
-Version: 1.0.3
+Version: 1.0.4
 Text Domain:       	gravityview-visual-composer
 License:           	GPLv2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,9 +20,13 @@ add_action( 'plugins_loaded', 'gv_extension_visual_composer_load', 20 );
  */
 function gv_extension_visual_composer_load() {
 
-	if( !class_exists( 'GravityView_Extension' ) ) {
+	if ( ! class_exists( 'GravityView_Extension' ) ) {
 
-		if( class_exists('GravityView_Plugin') && is_callable(array('GravityView_Plugin', 'include_extension_framework')) ) {
+		if ( class_exists( 'GravityView_Plugin' ) && is_callable( array(
+				'GravityView_Plugin',
+				'include_extension_framework'
+			) )
+		) {
 			GravityView_Plugin::include_extension_framework();
 		} else {
 			// We prefer to use the one bundled with GravityView, but if it doesn't exist, go here.
@@ -34,7 +38,7 @@ function gv_extension_visual_composer_load() {
 
 		protected $_title = 'Visual Composer';
 
-		protected $_version = '1.0.3';
+		protected $_version = '1.0.4';
 
 		protected $_min_gravityview_version = '1.1.7';
 
@@ -45,13 +49,13 @@ function gv_extension_visual_composer_load() {
 		function add_hooks() {
 
 			// Visual Composer isn't loaded.
-			if( !function_exists( 'vc_map' ) ) {
+			if ( ! function_exists( 'vc_map' ) ) {
 
-				self::add_notice(array(
+				self::add_notice( array(
 					'message' => sprintf( 'The GravityView Visual Composer extension requires the %sVisual Composer%s plugin.', '<a href="http://katz.si/visualcomposer">', '</a>' )
-				));
+				) );
 
-				do_action( 'gravityview_log_debug', 'GravityView_Visual_Composer[add_hooks] Not loading: Visual Composer isnt active.');
+				do_action( 'gravityview_log_debug', 'GravityView_Visual_Composer[add_hooks] Not loading: Visual Composer isnt active.' );
 
 				return;
 			}
@@ -61,6 +65,7 @@ function gv_extension_visual_composer_load() {
 
 		/**
 		 * Add the GravityView menu to the Visual Composer menu
+		 *
 		 * @uses vc_map
 		 * @return void
 		 */
@@ -68,22 +73,22 @@ function gv_extension_visual_composer_load() {
 			global $vc_manager;
 
 			$views = get_posts( array(
-				'post_type' => 'gravityview',
-				'numberposts' => -1,
-				'status' => 'publish'
-			));
+				'post_type'   => 'gravityview',
+				'numberposts' => - 1,
+				'status'      => 'publish'
+			) );
 
-			if ( empty($views) || is_wp_error( $views ) ) {
+			if ( empty( $views ) || is_wp_error( $views ) ) {
 
 				// By default, there are no Views found.
-				$gravityview_array[__( 'No GravityView Views found.', 'gravityview-visual-composer' )] = '';
+				$gravityview_array[ __( 'No GravityView Views found.', 'gravityview-visual-composer' ) ] = '';
 
 				$params = array(
 					array(
-						'type' => 'dropdown',
-						'heading' => __( 'View', 'gravityview-visual-composer' ),
-						'param_name' => 'id',
-						'value' => $gravityview_array,
+						'type'        => 'dropdown',
+						'heading'     => __( 'View', 'gravityview-visual-composer' ),
+						'param_name'  => 'id',
+						'value'       => $gravityview_array,
 						'description' => GravityView_Post_Types::no_views_text(),
 						'admin_label' => true
 					)
@@ -98,7 +103,7 @@ function gv_extension_visual_composer_load() {
 
 				// Map the title of the view to the ID
 				foreach ( $views as $view ) {
-					$title = !empty( $view->post_title ) ? esc_attr( $view->post_title ) : __('(no title)', 'gravityview-visual-composer' );
+					$title                 = ! empty( $view->post_title ) ? esc_attr( $view->post_title ) : __( '(no title)', 'gravityview-visual-composer' );
 					$views_array[ $title ] = $view->ID;
 				}
 
@@ -107,40 +112,40 @@ function gv_extension_visual_composer_load() {
 			}
 
 			vc_map( array(
-				'name' => __( 'GravityView', 'gravityview-visual-composer' ),
-				'base' => 'gravityview',
-				'icon' => plugins_url('assets/img/icon.png', __FILE__ ),
-				'category' => __( 'Content', 'gravityview-visual-composer' ),
+				'name'        => __( 'GravityView', 'gravityview-visual-composer' ),
+				'base'        => 'gravityview',
+				'icon'        => plugins_url( 'assets/img/icon.png', __FILE__ ),
+				'category'    => __( 'Content', 'gravityview-visual-composer' ),
 				'description' => __( 'Embed a View', 'gravityview-visual-composer' ),
-				'params' => $params
+				'params'      => $params
 			) );
 
 		} // if gravityview active
 
 		/**
 		 * Map GravityView
+		 *
+		 * @see https://wpbakery.atlassian.net/wiki/pages/viewpage.action?pageId=524332
 		 * @see GravityView_View_Data::get_default_args()
+		 *
 		 * @param  array $views Array of Views
+		 *
 		 * @return array                    Array of parameters
 		 */
 		function get_params( $views_array ) {
 
-			if( !class_exists( 'GravityView_View_Data' ) ) { return $views_array; }
-
-			$default_params = array(
-				'page_size' => GravityView_View_Data::get_default_arg( 'page_size', true ),
-				'show_only_approved' => GravityView_View_Data::get_default_arg( 'show_only_approved', true ),
-				'lightbox' => GravityView_View_Data::get_default_arg( 'lightbox', true ),
-			);
+			if ( ! class_exists( 'GravityView_View_Data' ) ) {
+				return $views_array;
+			}
 
 			// Add the view picker first
 			$params = array(
 				array(
-					'value' => $views_array,
-					'heading' => __( 'View', 'gravityview-visual-composer' ),
+					'value'       => $views_array,
+					'heading'     => __( 'View', 'gravityview-visual-composer' ),
 					'description' => __( 'Select a View to add it to your post or page.', 'gravityview-visual-composer' ),
-					'type'	=> 'dropdown',
-					'param_name' => 'id',
+					'type'        => 'dropdown',
+					'param_name'  => 'id',
 					'admin_label' => true,
 				)
 			);
@@ -149,19 +154,20 @@ function gv_extension_visual_composer_load() {
 
 				$param = GravityView_View_Data::get_default_arg( $key, true );
 
-				$type = isset( $param['type'] ) ? $param['type'] : null;
+				$type    = isset( $param['type'] ) ? $param['type'] : null;
 				$heading = isset( $param['label'] ) ? $param['label'] : null;
-				$value = isset( $param['value'] ) ? $param['value'] : null;
+				$value   = isset( $param['value'] ) ? $param['value'] : null;
 
 				// Different name for dropdown
 				switch ( $param['type'] ) {
 					case 'select':
-						$type = 'dropdown';
+						$type  = 'dropdown';
 						$value = isset( $param['options'] ) ? $param['options'] : array();
 						break;
 					case 'checkbox':
+						$type    = 'checkbox';
+						$value   = array( $heading => $value );
 						$heading = '';
-						$value = array( $heading => $value );
 						break;
 					case 'number':
 					case 'text':
@@ -170,12 +176,12 @@ function gv_extension_visual_composer_load() {
 				}
 
 				$params[] = array(
-					'type' => $type,
-					'heading' => $heading,
-					'class'	=> !empty( $param['class'] ) ? $param['class'] : NULL,
-					'param_name' => $key,
-					'description' => (empty($param['desc']) ? NULL : $param['desc']),
-					'value' => $value,
+					'type'        => $type,
+					'heading'     => $heading,
+					'class'       => ! empty( $param['class'] ) ? $param['class'] : null,
+					'param_name'  => $key,
+					'description' => ( empty( $param['desc'] ) ? null : $param['desc'] ),
+					'value'       => $value,
 					'admin_label' => true,
 				);
 			}
