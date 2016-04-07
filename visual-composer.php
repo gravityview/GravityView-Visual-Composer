@@ -3,7 +3,7 @@
 Plugin Name: GravityView - Visual Composer Extension
 Plugin URI: https://gravityview.co/extensions/visual-composer/
 Description: Enable enhanced GravityView integration with the <a href="http://katz.si/visualcomposer">Visual Composer</a> plugin
-Version: 1.0.3
+Version: 1.0.4
 Text Domain:       	gravityview-visual-composer
 License:           	GPLv2 or later
 License URI: 		http://www.gnu.org/licenses/gpl-2.0.html
@@ -34,7 +34,7 @@ function gv_extension_visual_composer_load() {
 
 		protected $_title = 'Visual Composer';
 
-		protected $_version = '1.0.3';
+		protected $_version = '1.0.4';
 
 		protected $_min_gravityview_version = '1.1.7';
 
@@ -119,6 +119,7 @@ function gv_extension_visual_composer_load() {
 
 		/**
 		 * Map GravityView
+		 * @see https://wpbakery.atlassian.net/wiki/pages/viewpage.action?pageId=524332
 		 * @see GravityView_View_Data::get_default_args()
 		 * @param  array $views Array of Views
 		 * @return array                    Array of parameters
@@ -126,12 +127,6 @@ function gv_extension_visual_composer_load() {
 		function get_params( $views_array ) {
 
 			if( !class_exists( 'GravityView_View_Data' ) ) { return $views_array; }
-
-			$default_params = array(
-				'page_size' => GravityView_View_Data::get_default_arg( 'page_size', true ),
-				'show_only_approved' => GravityView_View_Data::get_default_arg( 'show_only_approved', true ),
-				'lightbox' => GravityView_View_Data::get_default_arg( 'lightbox', true ),
-			);
 
 			// Add the view picker first
 			$params = array(
@@ -160,8 +155,9 @@ function gv_extension_visual_composer_load() {
 						$value = isset( $param['options'] ) ? $param['options'] : array();
 						break;
 					case 'checkbox':
-						$heading = '';
+						$type = 'checkbox';
 						$value = array( $heading => $value );
+						$heading = '';
 						break;
 					case 'number':
 					case 'text':

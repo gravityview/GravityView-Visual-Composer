@@ -1,9 +1,9 @@
 === GravityView - Visual Composer Extension ===
 Tags: gravityview
 Requires at least: 3.3
-Tested up to: 3.9.1
+Tested up to: 4.5
 Stable tag: trunk
-Contributors: katzwebservices, luistinygod
+Contributors: katzwebservices
 License: GPL 3 or higher
 
 Enable enhanced GravityView integration with the <a href="http://katz.si/visualcomposer">Visual Composer</a> plugin
@@ -15,6 +15,11 @@ Enable enhanced GravityView integration with the <a href="http://katz.si/visualc
 3. Follow the instructions
 
 == Changelog ==
+
+= 1.0.4 on April 6, 2016 =
+
+* Fixed: Checkbox labels not rendering properly
+* Updated the updater library
 
 = 1.0.3 =
 * Fixed: Label not properly displaying for checkbox options
